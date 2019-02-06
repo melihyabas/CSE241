@@ -1,0 +1,13 @@
+window_sizes 1280 637 320 955 485 104
+
+diagrams
+  active  classdiagram_ref 128010 // Shapes
+    764 443 100 A4 0 0
+end
+show_stereotypes
+selected class_ref 129418 // staticMethods
+open
+  classview_ref 128010 // HW7uml
+  deploymentview_ref 128010 // HW7uml
+end
+end

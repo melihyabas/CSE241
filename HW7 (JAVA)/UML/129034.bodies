@@ -1,0 +1,5 @@
+class point2d
+!!!135050.java!!!	getX() : double
+			return x;
+!!!135178.java!!!	getY() : double
+ return y;

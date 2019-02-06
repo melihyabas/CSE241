@@ -1,0 +1,37 @@
+class Circle
+!!!128778.java!!!	Circle(in r : int)
+ radius = r;
+!!!129034.java!!!	area() : double
+ return (Math.PI)*radius*radius;
+!!!129162.java!!!	perimeter() : double
+ return 2*(Math.PI)*radius;
+!!!129290.java!!!	compareTo(inout obj : Shape) : int
+ 
+		if(obj.area()>area())
+			return 1;
+		else if(obj.area()<area())
+			return -1;
+		else
+			return 0;
+!!!129418.java!!!	increment() : void
+x++; y++;
+!!!129546.java!!!	decrement() : void
+x--; y--;
+!!!129674.java!!!	draw(inout g : Graphics) : void
+
+		g.fillArc((int)x, (int)y, 2*radius, 2*radius, 0, 360);
+		
+!!!129802.java!!!	setRadius(in r : int) : void
+ radius=r;
+!!!129930.java!!!	setCoordinates(in a : double, in b : double) : void
+ x=a; y=b;
+!!!130058.java!!!	setX(in xn : double) : void
+x = xn;
+!!!130186.java!!!	setY(in yn : double) : void
+y = yn;
+!!!130314.java!!!	getRadius() : int
+return radius;
+!!!130442.java!!!	getX() : double
+return x;
+!!!130570.java!!!	getY() : double
+return y;

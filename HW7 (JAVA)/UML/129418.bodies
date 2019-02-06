@@ -1,0 +1,81 @@
+class staticMethods
+!!!140298.java!!!	convertAll(inout v : Vector<Shape>) : Shape
+		int i = 0;
+		Vector<Shape> v2 = new Vector<Shape>();
+		for(i=0 ; i<v.size() ; i++)
+		{
+	
+			if(v.get(i) instanceof Rectangle)
+			{
+				Rectangle r = new Rectangle();
+				r = (Rectangle)(v.get(i));
+	
+				PolygonDyn obj = new PolygonDyn(r);
+				v2.add(obj);
+			}
+			if(v.get(i) instanceof Triangle)
+			{
+				Triangle t = new Triangle();
+				t = (Triangle)(v.get(i));
+	
+				PolygonDyn obj = new PolygonDyn(t);
+				v2.add(obj);
+			}
+			if(v.get(i) instanceof Circle)
+			{
+				Circle c = new Circle();
+				c = (Circle)(v.get(i));
+	
+				PolygonDyn obj = new PolygonDyn(c);
+				v2.add(obj);
+			}		
+		}
+	
+		return v2;
+!!!140426.java!!!	drawAll(inout v : Vector<Shape>, inout g : Graphics) : void
+		int i; 
+
+		for(i=0 ; i<v.size() ; i++)
+		{
+			double random = Math.random()*(v.size());
+			int num = (int)random;			
+			if(i==0)
+				g.setColor(Color.GREEN);
+			else if(num%5==0)
+				g.setColor(Color.ORANGE);
+			else if(num%8==0)
+				g.setColor(Color.BLUE);
+			else if(num%7==0)
+				g.setColor(Color.RED);
+			else if(num%9==0)
+				g.setColor(Color.GRAY);
+			
+			else
+			{
+				if(i%3==0)
+					g.setColor(Color.CYAN);
+				else if(i%4 == 0)
+					g.setColor(Color.magenta);
+				else
+					g.setColor(Color.LIGHT_GRAY);
+	
+			}
+			
+			(v.get(i)).draw(g);
+		}
+
+!!!140554.java!!!	sortShapes(inout v : Vector<Shape>) : void
+		Shape temp;
+		int i,j;
+		for(i=0 ; i<v.size() ; i++)
+		{
+			for(j=0 ; j<v.size() ; j++)
+			{
+				if((v.get(i)).area() < (v.get(j)).area())
+				{
+					temp = v.get(i);
+					v.set(i,v.get(j));
+					v.set(j,temp);
+				}
+			}
+		}	
