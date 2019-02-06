@@ -1,0 +1,1125 @@
+/**
+ * @author Melih Yabas
+ */
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Vector;
+/**
+ * This class calculetes how shapes could draw in another shapes.
+ * @author melih
+ *
+ */
+@SuppressWarnings("unchecked")  public class ComposedShape implements Shape
+{
+	private Rectangle cR;
+	private Rectangle sR;
+	private Triangle cT;
+	private Triangle sT;
+	private Circle cC;
+	private Circle sC;
+	private Shape[] shp;
+	private double Area;
+	private double Perimeter;
+
+	/**
+	 * No parameter constructor.
+	 */
+	public ComposedShape()
+	{ }
+	/**
+	 * Construtor for container Rectangle and inner Rectangle
+	 * @param contR
+	 * @param smallR
+	 */
+	public ComposedShape(Rectangle contR, Rectangle smallR)	
+	{ 
+		cR = contR; sR = smallR;
+		Area = contR.area()+smallR.area();
+		Perimeter = contR.perimeter()+smallR.perimeter();
+
+	}
+	/**
+	 * Construtor for container Rectangle and inner Triangle
+	 * @param contR
+	 * @param smallT
+	 */
+	public ComposedShape(Rectangle contR, Triangle smallT)
+	{
+		cR = contR; sT = smallT;
+		Area = contR.area()+smallT.area();
+		Perimeter = contR.perimeter()+smallT.perimeter();
+
+	}
+	/**
+	 * Construtor for container Rectangle and inner Circle
+	 * @param contR
+	 * @param smallC
+	 */
+	public ComposedShape(Rectangle contR, Circle smallC)
+	{
+		cR=contR; sC=smallC;
+		Area = contR.area()+smallC.area();
+		Perimeter = contR.perimeter()+smallC.perimeter();
+
+	}	
+	/**
+	 * Construtor for container Triangle and inner Rectangle
+	 * @param contT
+	 * @param smallR
+	 */
+	public ComposedShape(Triangle contT, Rectangle smallR)
+	{
+		cT=contT; sR=smallR;
+		Area = contT.area()+smallR.area();
+		Perimeter = contT.perimeter()+smallR.perimeter();
+
+	}		
+	
+	/**
+	 * Construtor for container Triangle and inner Triangle
+	 * @param contT
+	 * @param smallT
+	 */
+	public ComposedShape(Triangle contT, Triangle smallT)
+	{
+		cT=contT; sT=smallT;
+		Area = contT.area()+smallT.area();
+		Perimeter = contT.perimeter()+smallT.perimeter();
+
+	}
+ 
+	/**
+	 * Construtor for container Triangle and inner Circle
+	 * @param contT
+	 * @param smallC
+	 */
+	public ComposedShape(Triangle contT, Circle smallC)
+	{
+		cT=contT; sC=smallC;
+		Area = contT.area()+smallC.area();
+		Perimeter = contT.perimeter()+smallC.perimeter();
+
+	}
+
+	/**
+	 * Construtor for container Circle and inner Rectangle
+	 * @param contC
+	 * @param smallR
+	 */
+	public ComposedShape(Circle contC, Rectangle smallR)
+	{
+		cC=contC; sR=smallR;
+		Area = contC.area()+smallR.area();
+		Perimeter = contC.perimeter()+smallR.perimeter();
+
+	}
+	
+	/**
+	 * Construtor for container Circle and inner Triangle
+	 * @param contC
+	 * @param smallT
+	 */
+	public ComposedShape(Circle contC, Triangle smallT)
+	{
+		cC=contC; sT=smallT;
+		Area = contC.area()+smallT.area();
+		Perimeter = contC.perimeter()+smallT.perimeter();
+
+	} 
+	
+	/**
+	 * Construtor for container Circle and inner Circle
+	 * @param contC
+	 * @param smallC
+	 */
+	public ComposedShape(Circle contC, Circle smallC)
+	{
+		cC=contC; sC=smallC;
+		Area = contC.area()+smallC.area();
+		Perimeter = contC.perimeter()+smallC.perimeter();
+
+	}
+	/**
+	 * Returns the areas of shapes.
+	 * 
+	 */
+	public double area()
+	{	
+		return Area;
+	}
+	/**
+	 * Returns the perimeters of shapes.
+	 */
+	public double perimeter()
+	{
+		return Perimeter;
+	}
+	/**
+	 * compares two shapes with recpect to their areas
+	 * @param obj
+	 */
+	public int compareTo(Shape obj)
+	{ 
+		if(obj.area()>area())
+			return 1;
+		else if(obj.area()<area())
+			return -1;
+		else
+			return 0;
+	}	
+	/**
+	 * incremets the coordinates
+	 */
+	public void increment()
+	{
+		int i;
+		for(i=0 ; i<shp.length&&shp[i]!=null ; i++)
+		{
+			if((shp[i] instanceof Triangle))
+			{
+				Triangle ti = new Triangle();
+				ti = (Triangle)(shp[i]);
+				ti.setX1(1+ti.getX1());
+				ti.setY1(1+ti.getY1());
+				ti.setX2(1+ti.getX2());
+				ti.setY2(1+ti.getY2());
+				ti.setX3(1+ti.getX3());
+				ti.setY3(1+ti.getY3());		
+			}
+			else if(shp[i] instanceof Rectangle)
+			{
+				Rectangle ri = new Rectangle();
+				ri = (Rectangle)(shp[i]);
+				ri.setX(1+ri.getX());
+				ri.setY(1+ri.getY());
+			}
+			else if(shp[i] instanceof Circle)
+			{
+				Circle ci = new Circle();
+				ci = (Circle)(shp[i]);
+				ci.setX(1+ci.getX());
+				ci.setY(1+ci.getY());
+			}
+		}
+	}
+	/**
+	 * decrements the coordinates
+	 * 
+	 */
+	public void decrement()
+	{
+		int i;
+		for(i=0 ; i<shp.length&&shp[i]!=null ; i++)
+		{
+			if((shp[i] instanceof Triangle))
+			{
+				Triangle ti = new Triangle();
+				ti = (Triangle)(shp[i]);
+				ti.setX1(ti.getX1()-1);
+				ti.setY1(ti.getY1()-1);
+				ti.setX2(ti.getX2()-1);
+				ti.setY2(ti.getY2()-1);
+				ti.setX3(ti.getX3()-1);
+				ti.setY3(ti.getY3()-1);		
+			}
+			else if(shp[i] instanceof Rectangle)
+			{
+				Rectangle ri = new Rectangle();
+				ri = (Rectangle)(shp[i]);
+				ri.setX(ri.getX()-1);
+				ri.setY(ri.getY()-1);
+			}
+			else if(shp[i] instanceof Circle)
+			{
+				Circle ci = new Circle();
+				ci = (Circle)(shp[i]);
+				ci.setX(ci.getX()-1);
+				ci.setY(ci.getY()-1);
+			}
+		}			
+	}
+	/**
+	 * This method draws the shapes.
+	 * @param g Graphics object for drawing
+	 */
+	public void draw(Graphics g)
+	{ 	
+		Vector vec = new Vector<Shape>();
+		
+		int i;
+		for(i=0 ; i<shp.length&&shp[i]!=null ; i++)
+		{	
+
+			vec.add(shp[i]);
+			
+		}	
+		staticMethods.drawAll(vec,g);
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing.
+	 * @param contR
+	 * @param smallR
+	 */
+	public void optimalFit(Rectangle contR, Rectangle smallR)
+	{
+		int shpSize = ((contR.getWidth())*(contR.getHeight()))/((smallR.getWidth())*(smallR.getHeight()))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		Rectangle tempShp = new Rectangle();
+
+		tempShp.setCoordinates(contR.getX(),contR.getY());
+		tempShp.setWidth(contR.getWidth());
+		tempShp.setHeight(contR.getHeight());
+		shp[index] = tempShp;
+		index++;
+
+		int widthC = contR.getWidth(), heightC = contR.getHeight(), widthS = smallR.getWidth(); 
+
+		int heightS = smallR.getHeight();
+		int x=0, y=0,temp=0,count=0, count2=0;
+
+		while(y+heightS<=heightC)
+		{	
+			count = 0;
+			while(x+widthS<=widthC)
+			{		
+				smallR.setCoordinates(x,y);
+				tempShp = new Rectangle();
+				tempShp.setCoordinates(x,y);
+				tempShp.setWidth(smallR.getWidth());
+				tempShp.setHeight(smallR.getHeight());		
+				shp[index] = tempShp;
+				index++;
+				x+=widthS;
+				count++;
+			}
+			y+=heightS;
+			x = 0;	
+			count2++;	
+		}
+
+		if((widthC-count*widthS<=widthC)&&(heightC>=heightS))
+		{
+			x=count*widthS;
+			temp=widthS;
+			widthS=heightS;	
+			heightS=temp;
+			if(widthS<heightS)
+			{
+				while(x+widthS<=widthC)
+				{
+						y=0;
+						while(y+heightS<=heightC)
+						{
+							smallR.setCoordinates(x,y);	
+							tempShp = new Rectangle();
+							tempShp.setCoordinates(x,y);
+							tempShp.setWidth(smallR.getWidth());
+							tempShp.setHeight(smallR.getHeight());				
+							shp[index] = tempShp;
+							index++;
+							y+=heightS;
+						}	
+					x+=widthS;
+
+				}
+				y+=heightS;
+			}
+			y=count2*widthS;
+			if(widthS>heightS)
+			{
+				while(y+heightS<=heightC)
+				{
+					x=0;
+					while(x+widthS<=widthC)
+					{
+						smallR.setCoordinates(x,y);		
+						tempShp = new Rectangle();
+						tempShp.setCoordinates(x,y);
+						tempShp.setWidth(smallR.getWidth());
+						tempShp.setHeight(smallR.getHeight());
+						shp[index] = tempShp;
+						index++;
+						x+=widthS;
+					}
+					y+=heightS;
+
+				}
+			}
+		
+		}
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing.
+	 * @param contR
+	 * @param smallT
+	 */
+	public void optimalFit(Rectangle contR, Triangle smallT)
+	{
+		int shpSize = (int)(((contR.getWidth())*(contR.getHeight()))/(smallT.getSide()*smallT.getSide()*Math.pow(3,0.5)/4)+1);
+		int i, index=0;
+		shp = new Shape[shpSize];
+		Rectangle tempShpr = new Rectangle();
+		Triangle tempShp = new Triangle();
+		tempShpr.setCoordinates(contR.getX(),contR.getY());
+		tempShpr.setWidth(contR.getWidth());
+		tempShpr.setHeight(contR.getHeight());
+		shp[index] = tempShpr;
+		index++;
+
+		int side, wid, hei;
+		int x=0, y=0;
+		double x1,y1,x2,y2,x3,y3;
+		double xr1,yr1,xr2,yr2,xr3,yr3;
+		wid = contR.getWidth();
+		hei = contR.getHeight();
+		side = smallT.getSide();	
+
+		if(side>wid||side>hei)
+		{
+			System.out.printf("Your triangle is too big for the rectangle!\n");
+		}
+		x1=(double)side/2;
+		y1=0;	
+		x2=0;
+		y2=((double)side/2)*Math.pow(3,0.5);
+		x3=side;
+		y3=(((double)side/2)*Math.pow(3,0.5));
+		
+		xr1=(double)side/2;
+		yr1=0;	
+		xr2=side;
+		yr2=((double)side/2)*Math.pow(3,0.5);
+		xr3=side+(double)side/2;
+		yr3=0;
+		
+		while((hei-y2)>=0)
+		{
+		
+			while((wid-x3)>=0)
+			{	
+				smallT.setCoordinates(x1,y1,x2,y2,x3,y3);
+				tempShp = new Triangle();
+				tempShp.setCoordinates(x1,y1,x2,y2,x3,y3);
+				shp[index] = tempShp;
+				index++;			
+				x1+=side;
+				x2+=side;
+				x3+=side;
+			}
+			x1=(double)side/2;
+			x2=0;
+			x3=side;
+			y1+=((double)side/2)*Math.pow(3,0.5);
+			y2+=((double)side/2)*Math.pow(3,0.5);
+			y3+=((double)side/2)*Math.pow(3,0.5);
+		}
+		while(hei-yr2>=0)
+		{
+			while((wid-xr3)>=0)
+			{	
+				smallT.setCoordinates(x1,y1,x2,y2,x3,y3);
+				tempShp = new Triangle();
+				tempShp.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);
+				shp[index] = tempShp;
+				index++;		
+
+				xr1+=side;
+				xr2+=side;
+				xr3+=side;
+			
+			}
+			xr1=(double)side/2;
+			xr2=side;		
+			xr3=side+(double)side/2;
+			yr1+=(double)(side/2)*Math.pow(3,0.5);
+			yr2+=(double)(side/2)*Math.pow(3,0.5);
+			yr3+=(double)(side/2)*Math.pow(3,0.5);
+		}
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing.
+	 * @param contR
+	 * @param smallC
+	 */
+	public void optimalFit(Rectangle contR, Circle smallC)
+	{
+		int shpSize = (int)(((contR.getWidth())*(contR.getHeight()))/(Math.PI*(smallC.getRadius())*(smallC.getRadius())))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		Rectangle tempShpr = new Rectangle();
+		Circle tempShp = new Circle();
+		tempShpr.setCoordinates(contR.getX(),contR.getY());
+		tempShpr.setWidth(contR.getWidth());
+		tempShpr.setHeight(contR.getHeight());
+		shp[index] = tempShpr;
+		index++;
+
+		int radius, cx, cy, wid, hei;
+	 	int x=0, y=0;
+
+		wid = contR.getWidth();
+		hei = contR.getHeight();
+		radius = smallC.getRadius();	
+
+		if(radius*2>wid||radius>hei)
+		{
+			System.out.printf("Your radius input is too big for the rectangle!");
+			return;
+		}
+		int a = 0, c1=0, c2=0;
+	  cx = 0;
+	  cy = 0;
+		while(cy+radius<=hei)
+		{
+			a++;
+			while(cx+radius<=wid)
+			{
+				cx+=2*radius;
+				c1++;
+			} 
+			if(a%2==0)
+			{
+				cy+=radius*2;
+				cx=radius;
+			}
+			else
+			{
+				cy+=radius*Math.pow(3,0.5);
+				cx=2*radius;	
+			}	
+			
+		}				
+	  cx = radius;
+	  cy = radius;
+
+		c2=0;
+
+		while(cy+radius<=hei)
+		{
+			while(cx+radius<=wid)
+			{
+				cx+=2*radius;
+				c2++;
+			} 
+			cy+=2*radius;
+			cx=0;
+			
+		}
+		  cx = 0;
+		  cy = 0;
+
+		if(c1>c2)
+		{
+		a=0;
+		
+		while(cy+2*radius<=hei)
+		{
+			a++;
+			while(cx+2*radius<=wid)
+			{
+				smallC.setCoordinates(cx,cy);
+				tempShp = new Circle();
+				tempShp.setCoordinates(cx,cy);
+				tempShp.setRadius(smallC.getRadius());
+				shp[index] = tempShp;
+				index++;		
+				cx+=2*radius;
+					c1++;		
+	
+				} 
+				if(a%2==0)
+				{	
+					cx=0;
+				}
+				else	
+				{
+				
+					cx=radius;	
+				}	
+				cy+=radius*Math.pow(3,0.5);
+				
+			}
+		}
+		else
+		{
+		while(cy+2*radius<=hei)
+		{
+			while(cx+2*radius<=wid)
+			{	
+				tempShp = new Circle();
+				tempShp.setCoordinates(cx,cy);
+				tempShp.setRadius(smallC.getRadius());
+		
+				shp[index] = tempShp;
+				index++;
+				smallC.setCoordinates(cx,cy);
+
+				cx+=2*radius;
+				c2++;
+			} 
+			cy+=2*radius;
+			cx=0;
+
+		}
+		}
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing.
+	 * @param contT
+	 * @param smallR
+	 */
+	public void optimalFit(Triangle contT, Rectangle smallR)
+	{
+		int shpSize = (int)((contT.getSide()*contT.getSide()*Math.pow(3,0.5)/4)/(smallR.getWidth()*smallR.getHeight()))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		
+		Triangle tempShpt = new Triangle();
+		Rectangle tempShp = new Rectangle();
+		
+
+		shp[index] = tempShpt;
+		index++;
+
+		int width, height, side;
+		int count=0, floor=1;
+		double x, y, x1, y1, x2, y2, x3, y3;
+
+		side = contT.getSide();
+		
+		width = smallR.getWidth();
+		height = smallR.getHeight();
+
+		tempShpt.setCoordinates((double)side/2,0,0,((double)side/2)*Math.pow(3,0.5),side,(((double)side/2)*Math.pow(3,0.5)));
+		tempShpt.setSide(contT.getSide());
+		
+		x1=(double)side/2;
+		y1=0;
+		x2=0;		
+		y2=((double)side/2)*Math.pow(3,0.5);
+		x3=side;
+		y3=(((double)side/2)*Math.pow(3,0.5));
+
+
+		while(width<=(2*(y2-(height*floor))/(Math.pow(3,0.5))))
+		{
+			y=y2-(height*floor);
+			x = height/(double)(Math.pow(3,0.5));
+			x*=floor;
+			count = 0;
+			while(width*count+width<(2*(y2-(height*floor))/(Math.pow(3,0.5))) )
+			{	
+				smallR.setCoordinates(x,y);
+				tempShp = new Rectangle();
+				tempShp.setCoordinates(x,y);
+				tempShp.setHeight(smallR.getHeight());
+				tempShp.setWidth(smallR.getWidth());
+				shp[index] = tempShp;
+				index++;		
+
+				x+=width;
+				count++;
+			}
+			floor++;
+		}
+
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing. 
+	 * @param contT
+	 * @param smallT
+	 */
+	public void optimalFit(Triangle contT, Triangle smallT)
+	{
+		int shpSize = (int)((contT.getSide()*contT.getSide()*Math.pow(3,0.5)/4)/(smallT.getSide()*smallT.getSide()*Math.pow(3,0.5)/4))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		
+		Triangle tempShpt = new Triangle();
+		Triangle tempShp = new Triangle();
+		
+		tempShpt.setSide(contT.getSide());
+		shp[index] = tempShpt;
+		index++;
+
+		double side,sideC, xn1, yn1, xn2, yn2, xn3, yn3, xr1, yr1, xr2, yr2, xr3, yr3,x1,y1,x2,y2,x3,y3;
+		
+		
+		sideC = contT.getSide();	
+ 	
+		x1=(double)sideC/2;
+		y1=0;
+		x2=0;	
+		y2=((double)sideC/2)*Math.pow(3,0.5);
+		x3=sideC;
+		y3=(((double)sideC/2)*Math.pow(3,0.5));
+
+		tempShpt.setCoordinates(x1,y1,x2,y2,x3,y3);
+	
+		side = smallT.getSide();
+
+		if(side>(2*y2)/(Math.pow(3,0.5)))
+		{
+			System.out.printf("Your side input is too big for the container shape!");
+			return;
+		}
+		xn1=x1;
+		yn1=0;
+		xn2=(double)(x1-((double)side/2));
+		yn2=(double)(((double)side/2)*Math.pow(3,0.5));
+		xn3=(double)(x1+(double)side/2);
+		yn3=(double)(((double)side/2)*Math.pow(3,0.5));
+	
+		if(side*Math.pow(3,0.5)>=y2 && (side/2)*Math.pow(3,0.5)<=y2)
+		{
+			smallT.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);
+			tempShp = new Triangle();	
+			tempShp.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);
+			tempShp.setSide(smallT.getSide());
+			shp[index] = tempShp;
+			index++;			
+		}
+
+		if(side>(2*y2)/(Math.pow(3,0.5)))
+		{	
+			smallT.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);	
+			tempShp = new Triangle();	
+			tempShp.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);
+			tempShp.setSide(smallT.getSide());
+			shp[index] = tempShp;
+			index++;				
+		}
+		int n=1;
+		while(yn2<=y2)
+		{	
+			smallT.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);
+			tempShp = new Triangle();	
+			tempShp.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);
+			tempShp.setSide(smallT.getSide());
+			shp[index] = tempShp;
+			index++;				
+			for(i=1; i<n; i++)
+			{
+				xn1+=side;
+				xn2+=side;
+				xn3+=side;
+				smallT.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);	
+				tempShp = new Triangle();	
+				tempShp.setCoordinates(xn1,yn1,xn2,yn2,xn3,yn3);	
+				tempShp.setSide(smallT.getSide());
+				shp[index] = tempShp;
+				index++;						
+			}
+			for(i=1; i<n; i++)
+			{
+				xn1-=side;
+				xn2-=side;
+				xn3-=side;
+			}		
+			n++;
+			yn1+=(double)((side/2)*Math.pow(3,0.5));
+			yn2+=(double)((side/2)*Math.pow(3,0.5));
+			yn3+=(double)((side/2)*Math.pow(3,0.5));
+			xn1-=(double)	side/2;
+			xn2-=(double)side/2;
+			xn3-=(double)side/2;
+		}								
+		xr1=x1;
+		yr1=(double)(side*Math.pow(3,0.5));
+		xr2=(double)(x1+((double)side/2));
+		yr2=(double)((double)side/2)*Math.pow(3,0.5);
+		xr3=(double)(x1-(double)side/2);
+		yr3=(double)(((double)side/2)*Math.pow(3,0.5));
+
+		 n=1;
+		if(side*Math.pow(3,0.5)<=y2)
+		{
+			while(yr1<=y2)
+			{	
+				smallT.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);		
+				tempShp = new Triangle();	
+				tempShp.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);	
+				tempShp.setSide(smallT.getSide());
+				shp[index] = tempShp;
+				index++;
+
+				for(i=1; i<n; i++)
+				{
+					xr1+=side;
+					xr2+=side;
+					xr3+=side;
+					smallT.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);			
+					tempShp = new Triangle();	
+					tempShp.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);
+					tempShp.setSide(smallT.getSide());
+					shp[index] = tempShp;
+					index++;					
+				}
+				for(i=1; i<n; i++)
+				{
+					xr1-=side;	
+					xr2-=side;
+					xr3-=side;
+				}		
+				n++;
+				yr1+=(double)((side/2)*Math.pow(3,0.5));
+				yr2+=(double)((side/2)*Math.pow(3,0.5));
+				yr3+=(double)((side/2)*Math.pow(3,0.5));
+				xr1-=(double)(side/2);
+				xr2-=(double)(side/2);
+				xr3-=(double)(side/2);
+			
+			}
+
+		}
+
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing. 
+	 * @param contT
+	 * @param smallC
+	 */
+	public void optimalFit(Triangle contT, Circle smallC)
+	{
+		int shpSize = (int)((contT.getSide()*contT.getSide()*Math.pow(3,0.5)/4)/(Math.PI*smallC.getRadius()*smallC.getRadius()))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		
+		Triangle tempShpt = new Triangle();
+		Circle tempShp = new Circle();
+		
+		tempShpt.setSide(contT.getSide());
+		shp[index] = tempShpt;
+		index++;
+
+		double x1,y1,x2,y2,x3,y3;
+		int radius, count=0, floor=1, oldcount=0, sideC;
+		sideC = contT.getSide();
+		radius = smallC.getRadius();
+		x1=(double)sideC/2;
+		y1=0;	
+		x2=0;
+		y2=((double)sideC/2)*Math.pow(3,0.5);
+		x3=sideC;
+		y3=(((double)sideC/2)*Math.pow(3,0.5));
+		
+		tempShpt.setCoordinates(x1,y1,x2,y2,x3,y3);
+
+		double cx,cy;
+
+		if((x3-x2)<6*radius/(Math.pow(3,0.5)))
+		{
+			System.out.printf("Your circle is too big for the triangle!\n");
+		}
+		
+		cx=radius*(Math.pow(3,0.5))-radius;
+		cy=y2-radius-radius;
+		
+		while(count*2*radius<=2*(y2-(floor*2*radius+radius))/(Math.pow(3,0.5)))
+		{
+			smallC.setCoordinates(cx,cy);
+			tempShp = new Circle();		
+			tempShp.setCoordinates(cx,cy);
+			tempShp.setRadius(smallC.getRadius());
+			shp[index] = tempShp;
+			index++;		
+			count++;
+			cx+=2*radius;
+		}
+		count+=1;
+		oldcount=count;
+		count=0;
+		cx=radius*(Math.pow(3,0.5))-radius;
+		cy=y2-radius-radius;
+		
+		while(floor*radius*(Math.pow(3,0.5))<=y2)
+		{
+			for(i=0;i<oldcount-1;i++)
+			{	
+				smallC.setCoordinates(cx,cy);
+				tempShp = new Circle();		
+				tempShp.setCoordinates(cx,cy);
+				tempShp.setRadius(smallC.getRadius());
+				
+				shp[index] = tempShp;
+				index++;						
+				count++;
+				cx+=2*radius; 
+
+			}
+			oldcount=count;
+			count=0;
+			cx=radius*(Math.pow(3,0.5))+floor*radius-radius;
+			cy-=radius*Math.pow(3,0.5);
+			floor++;
+		}
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing. 
+	 * @param contC
+	 * @param smallR
+	 */
+	void optimalFit(Circle contC, Rectangle smallR)
+	{
+		int shpSize = (int)((Math.PI*contC.getRadius()*contC.getRadius())/(smallR.getWidth()*smallR.getHeight()))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		Circle tempShpc = new Circle();
+		Rectangle tempShp = new Rectangle();
+		
+		tempShpc.setCoordinates(contC.getX(),contC.getY());
+		tempShpc.setRadius(contC.getRadius());
+		shp[index] = tempShpc;
+		index++;
+
+		int width, height,j,radius;
+		double x,y,oldx;
+
+		radius = contC.getRadius();
+
+		width = smallR.getWidth();
+		height = smallR.getHeight();
+		x = smallR.getX();
+		y = smallR.getY();
+
+		x=radius-width/2;
+		y=radius-(Math.pow((Math.pow(radius,2)-Math.pow((width/2),2)),0.5));
+		
+
+		while(y+height<2*radius&& y<radius)
+		{	
+				while((Math.pow(((x+width-radius)*(x+width-radius)+(y-radius)*(y-radius)),0.5))<radius)
+				{
+					smallR.setCoordinates(x,y);
+					tempShp = new Rectangle();
+					tempShp.setCoordinates(x,y);
+					tempShp.setWidth(smallR.getWidth());
+					tempShp.setHeight(smallR.getHeight());
+					shp[index] = tempShp;
+					index++;
+					x+=width;
+				}
+				y+=height;
+				smallR.setCoordinates(x,y);
+				
+
+			x=radius-Math.pow(Math.pow(radius,2)-Math.pow((y-radius),2),0.5);
+			smallR.setCoordinates(x,y);
+		
+		}
+		x+=width/2;
+		oldx=x;
+		smallR.setCoordinates(x,y);
+
+		while(y>radius && y<2*radius+height+height) 
+		{		
+			while(Math.pow(((x+width-radius)*(x+width-radius)+(y-radius)*(y-radius)),0.5)+width<radius)
+			{	
+				x+=width;
+				smallR.setCoordinates(x,y);
+				tempShp = new Rectangle();
+				tempShp.setCoordinates(x,y);			
+				tempShp.setWidth(smallR.getWidth());
+				tempShp.setHeight(smallR.getHeight());
+				
+				shp[index] = tempShp;
+				index++;						
+			}
+			y+=height;
+			x=oldx+width/2;	
+			oldx+=width;	
+			smallR.setCoordinates(x,y);
+		}		
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing.
+	 * @param contC
+	 * @param smallT
+	 */
+	public void optimalFit(Circle contC, Triangle smallT)
+	{
+		int shpSize = (int)((Math.PI*contC.getRadius()*contC.getRadius())/(smallT.getSide()*smallT.getSide()*Math.pow(3,0.5)/4))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		
+		Circle tempShpc = new Circle();
+		Triangle tempShp = new Triangle();
+		
+		tempShpc.setCoordinates(contC.getX(),contC.getY());
+		tempShpc.setRadius(contC.getRadius());
+		shp[index] = tempShpc;
+		index++;
+
+		double wid, hei, side, x1,y1,x2,y2,x3,y3,xr1,yr1,xr2,yr2,xr3,yr3, radius;
+		radius = contC.getRadius();
+		side = smallT.getSide();
+
+		if(side>=radius*3/2)
+		{
+			System.out.printf("Your triangle is too big for the circle!");
+			return;
+		}
+		wid=radius*Math.pow(2,0.5);
+		hei=radius*Math.pow(2,0.5);
+		x1=(double)((radius-wid/2)+(double)side/2);
+		y1=(double)(radius-wid/2);
+		x2=(double)(radius-wid/2);
+		y2=(double)((side/2)*Math.pow(3,0.5)+(radius-wid/2));
+		x3=(double)(side+(radius-wid/2));
+		y3=(double)((side/2)*Math.pow(3,0.5)+(radius-wid/2));
+
+		xr1=(double)((radius-wid/2)+(double)side/2);
+		yr1=(double)(radius-wid/2);	//r means "reverse"
+		xr2=(double)(side+(radius-wid/2));
+		yr2=(double)((radius-wid/2)+((double)side/2)*Math.pow(3,0.5));
+		xr3=(double)((radius-wid/2)+side+(double)side/2);
+		yr3=(double)(radius-wid/2);
+
+		while(y3<=radius+wid/2)
+		{
+		
+			while(x3<=radius+wid/2+side)
+			{	
+				smallT.setCoordinates(x1,y1,x2,y2,x3,y3);
+				tempShp = new Triangle();
+				tempShp.setCoordinates(x1,y1,x2,y2,x3,y3);
+				shp[index] = tempShp;
+				index++;				
+				
+				x1+=side;
+				x2+=side;
+				x3+=side;
+			}
+			x1=(double)((radius-wid/2)+(double)side/2);
+			x2=(double)((radius-wid/2));
+			x3=(double)(side+(radius-wid/2));
+			y1+=(double)((side/2)*Math.pow(3,0.5));	
+			y2+=(double)((side/2)*Math.pow(3,0.5));
+			y3+=(double)((side/2)*Math.pow(3,0.5));
+		}
+		while(yr3<=radius+wid/2-side)
+		{
+			while(xr3<=radius+wid/2)
+			{	
+				smallT.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);
+				tempShp = new Triangle();
+				tempShp.setCoordinates(xr1,yr1,xr2,yr2,xr3,yr3);
+				shp[index] = tempShp;
+				index++;			
+
+				xr1+=side;
+				xr2+=side;
+				xr3+=side;
+			}
+		
+			xr1=(double)((radius-wid/2)+(double)side/2);
+			xr2=(double)(side+(radius-wid/2));
+			xr3=(double)((radius-wid/2)+side+(double)side/2);
+			yr1+=(double)((side/2)*Math.pow(3,0.5));
+			yr2+=(double)((side/2)*Math.pow(3,0.5));
+			yr3+=(double)((side/2)*Math.pow(3,0.5));
+		}
+
+	}
+	/**
+	 * This optimalFit method calculetes all of the mathematical problems for drawing.
+	 * @param contC
+	 * @param smallC
+	 */
+	public void optimalFit(Circle contC, Circle smallC)
+	{
+		int shpSize = (int)((Math.PI*contC.getRadius()*contC.getRadius())/(Math.PI*smallC.getRadius()*smallC.getRadius()))+1;
+		int i, index=0;
+		shp = new Shape[shpSize];
+		
+		Circle tempShpc = new Circle();
+		Circle tempShp = new Circle();
+		
+		tempShpc.setCoordinates(contC.getX(),contC.getY());
+		tempShpc.setRadius(contC.getRadius());
+		shp[index] = tempShpc;
+		index++;
+
+		double cx, cy, wid, hei; 
+		int r, radius;
+		radius = contC.getRadius();
+		r = smallC.getRadius();
+		if(r>radius)
+		{
+			System.out.printf("Your circle is too big for the circle\n");
+			return;
+		}
+
+		hei = radius*(Math.pow(2,0.5));
+		wid = radius*(Math.pow(2,0.5));
+
+		cx = radius-(wid/2);
+		cy = radius-(wid/2);
+		
+		
+		if(2*r>radius)
+		{
+			cx=radius-r;
+			cy= radius-r;
+			smallC.setCoordinates(cx,cy);
+			tempShp = new Circle();	
+			tempShp.setCoordinates(cx,cy);
+			tempShp.setRadius(smallC.getRadius());
+			shp[index] = tempShp;
+			index++;			
+		
+
+			return;
+		}
+		if(4*r>radius)
+		{
+			while(cy<=hei-r)
+			{
+				while(cx<=wid-1-r)
+				{	
+					smallC.setCoordinates(cx,cy);
+					tempShp = new Circle();	
+					tempShp.setCoordinates(cx,cy);
+					tempShp.setRadius(smallC.getRadius());
+					
+					shp[index] = tempShp;
+					index++;					
+
+					cx+=2*r;
+				} 
+				cy+=2*r;
+				cx = radius-(wid/2)+r;	
+			}
+		}
+		else
+		{
+			while(cy-2*r<=hei-r)
+			{
+				while(cx-2*r<=wid-r)
+				{	
+					smallC.setCoordinates(cx,cy);
+					tempShp = new Circle();	
+					tempShp.setCoordinates(cx,cy);
+					tempShp.setRadius(smallC.getRadius());					
+					shp[index] = tempShp;
+					index++;					
+
+					cx+=2*r;
+				} 
+				cy+=2*r;
+				cx = radius-(wid/2);	
+			}
+		}
+
+		
+	}
+
+}

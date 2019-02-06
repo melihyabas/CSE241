@@ -1,0 +1,122 @@
+format 221
+
+classcanvas 128010 class_ref 128266 // Shape
+  classdiagramsettings member_max_width 0 end
+  xyzwh 433 2 2000 97 49
+end
+classcanvas 128138 class_ref 128394 // shapes
+  classdiagramsettings member_max_width 0 end
+  xyz 21 265 2000
+end
+classcanvas 128266 class_ref 128522 // ComposedShape
+  classdiagramsettings member_max_width 0 end
+  xyz 21 8 2006
+end
+classcanvas 128650 class_ref 128650 // PolygonDyn
+  classdiagramsettings member_max_width 0 end
+  xyz 50 209 3005
+end
+classcanvas 128906 class_ref 128778 // Rectangle
+  classdiagramsettings member_max_width 0 end
+  xyz 108 158 3005
+end
+classcanvas 129418 class_ref 128906 // polygon
+  classdiagramsettings member_max_width 0 end
+  xyz 422 118 3011
+end
+classcanvas 129802 class_ref 129162 // PolygonVect
+  classdiagramsettings member_max_width 0 end
+  xyz 276 226 3017
+end
+classcanvas 130058 class_ref 129418 // Triangle
+  classdiagramsettings member_max_width 0 end
+  xyz 168 99 2006
+end
+classcanvas 130442 class_ref 128650 // PolygonDyn
+  classdiagramsettings member_max_width 0 end
+  xyz 462 248 3017
+end
+classcanvas 130954 class_ref 128138 // Circle
+  classdiagramsettings member_max_width 0 end
+  xyz 237 45 3011
+end
+relationcanvas 128394 relation_ref 128266 // <generalisation>
+  from ref 128266 z 2007 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128522 relation_ref 129034 // <unidirectional association>
+  from ref 128266 z 2007 stereotype "<<vector>>" xyz 226.5 -46 2007 to ref 128010
+  role_a_pos 372 8 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128778 relation_ref 128394 // <directional composition>
+  decenter_end 115
+  from ref 128266 z 3006 stereotype "<<vector>>" xyz 50.5 50.5 3006 to point 77 54
+  line 130314 z 3006 to ref 128650
+  role_a_pos 68 190 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129034 relation_ref 129546 // <generalisation>
+  from ref 128906 z 3006 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129162 relation_ref 128522 // <directional composition>
+  from ref 128266 z 3006 to ref 128906
+  role_a_pos 138 139 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129290 relation_ref 128650 // <directional composition>
+  decenter_end 238
+  from ref 128266 z 3006 to ref 128906
+  role_a_pos 131 139 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129546 relation_ref 129162 // <generalisation>
+  decenter_end 432
+  from ref 129418 z 3012 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129674 relation_ref 129290 // <generalisation>
+  from ref 128650 z 3012 to ref 129418
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129930 relation_ref 129418 // <generalisation>
+  from ref 129802 z 3018 to ref 129418
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130186 relation_ref 129802 // <generalisation>
+  from ref 130058 z 2007 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130570 relation_ref 129290 // <generalisation>
+  from ref 130442 z 3018 to ref 129418
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131082 relation_ref 128138 // <generalisation>
+  from ref 130954 z 3012 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131210 relation_ref 128778 // <directional composition>
+  from ref 128266 z 3012 to ref 130954
+  role_a_pos 213 41 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131338 relation_ref 128906 // <directional composition>
+  from ref 128266 z 3012 to ref 130954
+  role_a_pos 213 41 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131466 relation_ref 129930 // <directional composition>
+  from ref 128266 z 2007 to ref 130058
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

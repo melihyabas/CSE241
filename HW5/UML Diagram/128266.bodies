@@ -1,0 +1,13 @@
+class Shape
+!!!144522.cpp!!!	operator ==(inout obj : Shape) : bool
+	return(Area==obj.Area);
+!!!144650.cpp!!!	operator !=(inout obj : Shape) : bool
+	return(Area!=obj.Area);
+!!!144778.cpp!!!	operator <(inout obj : Shape) : bool
+	return(Area<obj.Area);
+!!!144906.cpp!!!	operator >(inout obj : Shape) : bool
+	return(Area>obj.Area);
+!!!145034.cpp!!!	operator <=(inout obj : Shape) : bool
+	return(Area<=obj.Area);
+!!!145162.cpp!!!	operator >=(inout obj : Shape) : bool
+	return(Area>=obj.Area);

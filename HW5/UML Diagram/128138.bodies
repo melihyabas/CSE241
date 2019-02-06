@@ -1,0 +1,41 @@
+class Circle
+!!!128906.cpp!!!	setCoord(inout c : Circle, in a : int, in b : int) : void
+	c.x=a;
+	c.y=b;
+!!!129290.cpp!!!	perimeter() : double
+	
+	Perimeter = 2*PI*radius;
+	return Perimeter;
+!!!129418.cpp!!!	area() : double
+	Area = PI*radius*radius;
+	return Area;
+!!!129674.cpp!!!	draw(inout res : ostream) : void
+	
+	res<<"<circle x=\""<<x<<"\" y=\""<<y<<"\" r=\""<<radius<<"\" stroke=\"black\" fill=\"red\" />\n";
+!!!130058.cpp!!!	operator ++(in dummy : int) : Shape
+	Circle* temp;
+	temp = new Circle;
+	temp->x=x;
+	temp->y=y;
+	temp->radius=radius;	 
+	x++;		y++; 
+	return *temp;
+!!!130186.cpp!!!	operator --(in dummy : int) : Shape
+	Circle* temp;
+	temp = new Circle;
+	temp->x=x;
+	temp->y=y;	
+	temp->radius=radius;	 
+	
+	x--;		y--; 
+	return *temp;	
+!!!130314.cpp!!!	operator ==(inout e : Circle) : bool
+	return(this->radius==e.radius);
+!!!130442.cpp!!!	operator +(in val : double) : Circle
+	return Circle(radius+val);
+!!!130570.cpp!!!	operator -(in val : double) : Circle
+	return Circle(radius-val);
+!!!130698.cpp!!!	calcPerimeters(in cn : Circle, in piece : double) : double
+	return piece*cn.perimeter();
+!!!130826.cpp!!!	calcAreas(in cn : Circle, in piece : double) : double
+	return piece*cn.area();

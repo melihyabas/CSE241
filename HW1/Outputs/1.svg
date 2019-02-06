@@ -1,0 +1,26 @@
+<svg version="1.1"
+baseProfile="full"
+  width="800" height="750"
+xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="800" height="750" fill="red"></rect>
+ <rect width="125" height="400" stroke="black" x="0" y="0"  fill="green"></rect> 
+
+ <rect width="125" height="400" stroke="black" x="125" y="0"  fill="green"></rect> 
+
+ <rect width="125" height="400" stroke="black" x="250" y="0"  fill="green"></rect> 
+
+ <rect width="125" height="400" stroke="black" x="375" y="0"  fill="green"></rect> 
+
+ <rect width="125" height="400" stroke="black" x="500" y="0"  fill="green"></rect> 
+
+ <rect width="125" height="400" stroke="black" x="625" y="0"  fill="green"></rect> 
+
+ <rect width="400" height="125" stroke="black" x="0" y="400"  fill="green"></rect> 
+
+ <rect width="400" height="125" stroke="black" x="400" y="400"  fill="green"></rect> 
+
+ <rect width="400" height="125" stroke="black" x="0" y="525"  fill="green"></rect> 
+
+ <rect width="400" height="125" stroke="black" x="400" y="525"  fill="green"></rect> 
+
+</svg>

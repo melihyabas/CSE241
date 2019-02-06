@@ -1,0 +1,18 @@
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg"><circle cx="555" cy="555" r="555" fill="red" />
+
+<circle stroke="black" cx="263" cy="263" r="100" fill="green" />
+<circle stroke="black" cx="463" cy="263" r="100" fill="green" />
+<circle stroke="black" cx="663" cy="263" r="100" fill="green" />
+<circle stroke="black" cx="863" cy="263" r="100" fill="green" />
+<circle stroke="black" cx="263" cy="463" r="100" fill="green" />
+<circle stroke="black" cx="463" cy="463" r="100" fill="green" />
+<circle stroke="black" cx="663" cy="463" r="100" fill="green" />
+<circle stroke="black" cx="863" cy="463" r="100" fill="green" />
+<circle stroke="black" cx="263" cy="663" r="100" fill="green" />
+<circle stroke="black" cx="463" cy="663" r="100" fill="green" />
+<circle stroke="black" cx="663" cy="663" r="100" fill="green" />
+<circle stroke="black" cx="863" cy="663" r="100" fill="green" />
+<circle stroke="black" cx="263" cy="863" r="100" fill="green" />
+<circle stroke="black" cx="463" cy="863" r="100" fill="green" />
+<circle stroke="black" cx="663" cy="863" r="100" fill="green" />
+<circle stroke="black" cx="863" cy="863" r="100" fill="green" /></svg>

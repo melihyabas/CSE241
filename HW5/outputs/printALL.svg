@@ -1,0 +1,4 @@
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+<polygon points=" 375 0 0 649 750 649" stroke = "black" fill="red"></polygon><rect x="0" y="0" stroke="Black" width="500" height="650" fill="red"></rect>
+<circle x="0" y="0" r="424" stroke="black" fill="red" />
+</svg>
